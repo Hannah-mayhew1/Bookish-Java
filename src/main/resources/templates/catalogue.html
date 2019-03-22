@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!--@thymesVar id="model" type="org.softwire.training.bookish.models.page.CatalogueModel"-->
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bookish - Catalogue</title>
+    <link rel="stylesheet" href="/styles/general.css"/>
+    <link rel="stylesheet" href="/styles/navbar.css"/>
+    <link rel="stylesheet" href="/styles/about.css"/>
+</head>
+<body>
+    <div th:replace="fragments/navbar :: navbar">
+    </div>
+    <div>
+        <table>
+            <tr>
+                <th scope="col">ISBN</th>
+                <th scope="col">Book Title</th>
+                <th scope="col">Author First Name</th>
+                <th scope="col">Author Second Name</th>
+                <th scope="col">Category</th>
+                <th scope="col">Total Copies</th>
+            </tr>
+            <tr th:each="book : ${model.books}">
+                <td><span th:text="${book.isbn}"></span></td>
+                <td><span th:text="${book.bookTitle}"></span></td>
+                <td><b><span th:text="${book.authorFirstName}"></span></b></td>
+                <td><b><span th:text="${book.authorSecondName}"></span></b></td>
+                <td><b><span th:text="${book.category}"></span></b></td>
+                <td><b><span th:text="${book.totalCopies}"></span></b></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
