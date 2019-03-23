@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/styles/general.css"/>
     <link rel="stylesheet" href="/styles/navbar.css"/>
     <link rel="stylesheet" href="/styles/about.css"/>
+    <link rel="stylesheet" href="/styles/table.css"/>
 </head>
 <body>
     <div th:replace="fragments/navbar :: navbar">
@@ -26,10 +27,10 @@
             <tr th:each="book : ${model.books}">
                 <td><span th:text="${book.isbn}"></span></td>
                 <td><span th:text="${book.bookTitle}"></span></td>
-                <td><b><span th:text="${book.authorFirstName}"></span></b></td>
-                <td><b><span th:text="${book.authorSecondName}"></span></b></td>
-                <td><b><span th:text="${book.category}"></span></b></td>
-                <td><b><span th:text="${book.totalCopies}"></span></b></td>
+                <td><span th:text="${book.authorFirstName}"></span></td>
+                <td><span th:text="${book.authorSecondName}"></span></td>
+                <td><span th:text="${book.category}"></span></td>
+                <td><span th:text="${book.totalCopies}"></span></td>
             </tr>
         </table>
     </div>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!--@thymesVar id="model" type="org.softwire.training.bookish.models.page.MembersModel"-->
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bookish - Catalogue</title>
+    <link rel="stylesheet" href="/styles/general.css"/>
+    <link rel="stylesheet" href="/styles/navbar.css"/>
+    <link rel="stylesheet" href="/styles/about.css"/>
+    <link rel="stylesheet" href="/styles/table.css"/>
+</head>
+<body>
+<div th:replace="fragments/navbar :: navbar">
+</div>
+<div>
+    <table>
+        <tr>
+            <th scope="col">First Name</th>
+            <th scope="col">Second Name</th>
+            <th scope="col">ID</th>
+
+        </tr>
+        <tr th:each="member : ${model.members}">
+            <td><span th:text="${member.firstName}"></span></td>
+            <td><span th:text="${member.secondName}"></span></td>
+            <td><b><span th:text="${member.id}"></span></b></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

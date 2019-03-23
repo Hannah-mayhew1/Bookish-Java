@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!--@thymesVar id="model" type="org.softwire.training.bookish.models.page.CheckoutModel"-->
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bookish - Catalogue</title>
+    <link rel="stylesheet" href="/styles/general.css"/>
+    <link rel="stylesheet" href="/styles/navbar.css"/>
+    <link rel="stylesheet" href="/styles/about.css"/>
+    <link rel="stylesheet" href="/styles/table.css"/>
+</head>
+<body>
+<div th:replace="fragments/navbar :: navbar">
+</div>
+<div>
+    <table>
+        <tr>
+            <th scope="col">ISBN</th>
+            <th scope="col">Member ID</th>
+            <th scope="col">Date Checked Out</th>
+            <th scope="col">Date Due Back</th>
+            <th scope="col">Checkout ID</th>
+        </tr>
+        <tr th:each="checkout : ${model.booksOnLoan}">
+            <td><span th:text="${checkout.isbn}"></span></td>
+            <td><span th:text="${checkout.memberId}"></span></td>
+            <td><b><span th:text="${checkout.dateCheckedOut}"></span></b></td>
+            <td><b><span th:text="${checkout.dateDueBack}"></span></b></td>
+            <td><b><span th:text="${checkout.checkoutId}"></span></b></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
