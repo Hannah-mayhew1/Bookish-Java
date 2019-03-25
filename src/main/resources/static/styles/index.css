@@ -21,4 +21,12 @@
     font-family: "Segoe UI", sans-serif;
     margin: 15px 0 0 0;
 }
+#company-logo {
+    position: relative;
+    height: 200px;
+    width: 200px;
+    left: 450px;
+    top: -100px;
+
+}
 
