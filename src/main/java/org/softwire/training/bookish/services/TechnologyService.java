@@ -25,6 +25,8 @@ public class TechnologyService extends DatabaseService {
         );
     }
 
+    // INSERT INTO technologies (name, logoUrl) VALUES ('Java', 'https://logo.com/logo')
+
     public void deleteTechnology(int technologyId) {
         jdbi.useHandle(handle ->
                 handle.createUpdate("DELETE FROM technologies WHERE id = :id")

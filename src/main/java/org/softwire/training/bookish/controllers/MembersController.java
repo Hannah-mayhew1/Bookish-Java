@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/members")
@@ -28,13 +30,38 @@ public class MembersController {
     public MembersController(MemberService memberService) { this.memberService = memberService; }
 
     @RequestMapping("")
-    ModelAndView members() {
+    ModelAndView members(@ModelAttribute("message") String message) {
 
         List<Member> allMembers = memberService.getAllMembers();
 
         MembersModel membersModel = new MembersModel();
         membersModel.setMembers(allMembers);
+        membersModel.setMessage(message);
 
         return new ModelAndView("members", "model", membersModel);
+    }
+
+    @RequestMapping("/add-member")
+    RedirectView addMember(@ModelAttribute Member member, RedirectAttributes attributes) {
+
+        Optional<Member> existingMember = memberService.getMemberWithName(
+                member.getFirstName(), member.getSecondName()
+        );
+        if (!existingMember.isPresent()) {
+            memberService.addMember(member);
+            return new RedirectView("/members");
+        } else {
+            attributes.addFlashAttribute("message", "This member already exists!");
+            return new RedirectView("/members");
+        }
+    }
+
+    @RequestMapping("/delete-member")
+    RedirectView deleteMember(@RequestParam int memberID) {
+
+        memberService.deleteMember(memberID);
+
+        return new RedirectView("/members");
+
     }
 }

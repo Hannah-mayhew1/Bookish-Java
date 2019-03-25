@@ -4,6 +4,7 @@ import org.softwire.training.bookish.models.database.Member;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MemberService extends DatabaseService {
@@ -13,6 +14,33 @@ public class MemberService extends DatabaseService {
                 handle.createQuery("SELECT * FROM members")
                         .mapToBean(Member.class)
                         .list()
+        );
+    }
+
+    public Optional<Member> getMemberWithName(String firstName, String secondName) {
+        return jdbi.withHandle(handle ->
+                handle.createQuery("SELECT * FROM members WHERE first_name = :firstName AND second_name = :secondName")
+                    .bind("firstName", firstName)
+                    .bind("secondName", secondName)
+                    .mapToBean(Member.class)
+                    .findFirst()
+        );
+    }
+
+    public void addMember(Member member) {
+        jdbi.useHandle(handle ->
+                handle.createUpdate("INSERT INTO members (first_name, second_name) VALUES (:first_name, :second_name)")
+                    .bind("first_name", member.getFirstName())
+                    .bind("second_name", member.getSecondName())
+                    .execute()
+        );
+    }
+
+    public void deleteMember(int memberID) {
+        jdbi.useHandle(handle ->
+                handle.createUpdate("DELETE FROM members WHERE id = :id")
+                        .bind("id", memberID)
+                        .execute()
         );
     }
 }
