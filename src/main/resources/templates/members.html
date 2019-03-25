@@ -10,6 +10,32 @@
     <link rel="stylesheet" href="/styles/navbar.css"/>
     <link rel="stylesheet" href="/styles/about.css"/>
     <link rel="stylesheet" href="/styles/table.css"/>
+    <script   src="http://code.jquery.com/jquery-3.3.1.min.js"   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="   crossorigin="anonymous"></script>
+    <script>
+        function hideEditForm() {
+            $('#edit-member').hide();
+            $('#add-member').show();
+        }
+
+        function showEditForm(id, firstName, secondName) {
+            $('#edit-member #id-input').val(id);
+            $('#edit-member #first-name-input').val(firstName);
+            $('#edit-member #second-name-input').val(secondName);
+            $('#edit-member').show();
+            $('#edit-member').get(0).scrollIntoView();
+            $('#add-member').hide();
+        }
+
+        $(document).ready(function() {
+            $('.member-row td').click(function() {
+                if ($(this).data('link')) {
+                    window.location = '/members/' + $(this).closest('.member-row').data("member-id");
+                }
+            });
+        });
+
+        $(document).ready(function() { hideEditForm(); });
+    </script>
 </head>
 <body>
 <div th:replace="fragments/navbar :: navbar">
@@ -23,15 +49,18 @@
             <th scope="col">ID</th>
             <th scope="col">Actions</th>
         </tr>
-        <tr th:each="member : ${model.members}">
-            <td><span th:text="${member.firstName}"></span></td>
-            <td><span th:text="${member.secondName}"></span></td>
-            <td><b><span th:text="${member.id}"></span></b></td>
-            <td><a th:href="${'/members/delete-member?memberID=' + member.id}" class="delete-button">delete</a></td>
+        <tr class="member-row" th:each="member : ${model.members}" th:attr="data-member-id=${member.id}" >
+            <td data-link="true"><span th:text="${member.firstName}"></span></td>
+            <td data-link="true"><span th:text="${member.secondName}"></span></td>
+            <td data-link="true"><b><span th:text="${member.id}"></span></b></td>
+            <td>
+                <a th:href="${'/members/delete-member?memberID=' + member.id}" class="delete-button">delete</a>
+                <button th:onclick="'javascript:showEditForm(' + ${member.id} + ',\'' + ${member.firstName} + '\',\'' + ${member.secondName} + '\');'" class="delete-button">edit</button>
+            </td>
         </tr>
     </table>
 </div>
-<div>
+<div id="add-member">
     <h3> Add a new member:</h3>
     <form th:action="@{/members/add-member}" method="post">
         <div class="add-member-row">
@@ -51,7 +80,28 @@
             <input type="submit" value="Add member" />
         </div>
     </form>
-
+</div>
+<div id="edit-member">
+    <h3>Edit member:</h3>
+    <form th:action="@{/members/edit-member}" method="post">
+        <input id="id-input" type="hidden" name="id">
+        <div class="edit-member-row">
+            <label>
+                <span>First Name: </span>
+                <input id="first-name-input" type="text" name="firstName">
+            </label>
+        </div>
+        <div class="edit-member-row">
+            <label>
+                <span>Second Name: </span>
+                <input id="second-name-input" type="text" name="secondName">
+            </label>
+        </div>
+        <div class="edit-member-row">
+            <span><!-- spacer --></span>
+            <input type="submit" value="Edit member" /> <input type="button" th:onclick="'javascript:hideEditForm()'" value ="Cancel"/>
+        </div>
+    </form>
 </div>
 </body>
 </html>

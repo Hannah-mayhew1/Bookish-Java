@@ -15,4 +15,13 @@ public class CheckoutService extends DatabaseService{
                         .list()
         );
     }
+
+    public List<Checkout> getBooksOnLoanByMember(int memberId) {
+        return jdbi.withHandle(handle ->
+                handle.createQuery("SELECT * FROM checkout WHERE member_id = :memberId")
+                        .bind("memberId", memberId)
+                        .mapToBean(Checkout.class)
+                        .list()
+        );
+    }
 }

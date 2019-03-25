@@ -10,4 +10,10 @@ public class CheckoutModel {
 
     public List<Checkout> getBooksOnLoan() { return booksOnLoan; }
     public void setBooksOnLoan(List<Checkout> booksOnLoan) { this.booksOnLoan = booksOnLoan; }
+
+
+
+
+
+
 }

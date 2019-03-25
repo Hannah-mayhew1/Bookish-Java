@@ -1,0 +1,14 @@
+#member-icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    height: 200px;
+    width: 200px;
+}
+
+#member-name {
+    position: absolute;
+    top: 70px;
+    left: 240px;
+    width: 60%
+}

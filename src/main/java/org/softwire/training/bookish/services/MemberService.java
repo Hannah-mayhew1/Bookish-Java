@@ -27,6 +27,15 @@ public class MemberService extends DatabaseService {
         );
     }
 
+    public Optional<Member> getMemberWithId(int memberId) {
+        return jdbi.withHandle(handle ->
+                handle.createQuery("SELECT * FROM members WHERE id = :memberId")
+                    .bind("memberId" , memberId)
+                    .mapToBean(Member.class)
+                    .findFirst()
+        );
+    }
+
     public void addMember(Member member) {
         jdbi.useHandle(handle ->
                 handle.createUpdate("INSERT INTO members (first_name, second_name) VALUES (:first_name, :second_name)")
@@ -40,6 +49,16 @@ public class MemberService extends DatabaseService {
         jdbi.useHandle(handle ->
                 handle.createUpdate("DELETE FROM members WHERE id = :id")
                         .bind("id", memberID)
+                        .execute()
+        );
+    }
+
+    public void editMember(Member member) {
+        jdbi.useHandle(handle ->
+                handle.createUpdate("UPDATE members SET first_name = :firstName, second_name = :secondName WHERE id = :id")
+                        .bind("id", member.getId())
+                        .bind("firstName", member.getFirstName())
+                        .bind("secondName", member.getSecondName())
                         .execute()
         );
     }
