@@ -4,21 +4,20 @@
 
 
     <nav th:fragment="navbar">
-        <div class="navbar-title">
-            <a href="/">Bookish</a>
+
+        <div class="inner-navbar">
+            <a href="/" class="navbar-homepage" alt="index" style="width:80px;height:60px;border:0; margin-left: 20px"></a>
+            <div class="navbar-item">
+                <a href="/catalogue">Catalogue</a>
+            </div>
+            <div class="navbar-item">
+                <a href="/members">Members</a>
+            </div>
+            <div class="navbar-item">
+                <a href="/checkout">Checkout</a>
+            </div>
         </div>
-        <div class="navbar-item">
-            <a href="/about">About</a>
-        </div>
-        <div class="navbar-item">
-            <a href="/catalogue">Catalogue</a>
-        </div>
-        <div class="navbar-item">
-            <a href="/members">Members</a>
-        </div>
-        <div class="navbar-item">
-            <a href="/checkout">Checkout</a>
-        </div>
+        <a href="/about" class="navbar-logo" alt="about" style="width:90px;height:80px;border:0; margin-right: 20px"></a>
     </nav>
 
 
