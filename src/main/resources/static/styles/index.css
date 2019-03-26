@@ -27,20 +27,30 @@
     line-height: 100%;
 }
 
+.jumbotron h3 {
+    margin: 0;
+
+    font-family: "Segoe UI", sans-serif;
+    font-weight: normal;
+    font-size: 28px;
+    line-height: 100%;
+}
+
+
 .jumbotron p {
     font-family: "Segoe UI", sans-serif;
     margin: 15px 0 0 0;
 }
 #company-logo {
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    alignment: center;
     height: 250px;
     width: 300px;
-    left: 450px;
-    top: -150px;
 
 }
 .table {
-    position: relative;
+    position: absolute;
     bottom: 100px;
 }
 
