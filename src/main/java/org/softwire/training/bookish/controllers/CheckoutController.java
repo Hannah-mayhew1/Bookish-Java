@@ -21,23 +21,27 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/checkout")
 public class CheckoutController {
+
     private final CheckoutService checkoutService;
+    private final BookService bookService;
 
     @Autowired
-    public CheckoutController(CheckoutService checkoutService) { this.checkoutService = checkoutService; }
+    public CheckoutController(CheckoutService checkoutService, BookService bookService) {
+        this.checkoutService = checkoutService;
+        this.bookService = bookService;
+    }
 
     @RequestMapping("")
-    ModelAndView booksOnLoan() {
-
-        List<Checkout> allBooksOnLoan = checkoutService.getAllBooksOnLoan();
-
-        CheckoutModel checkoutModel = new CheckoutModel();
-        checkoutModel.setBooksOnLoan(allBooksOnLoan);
-
-        return new ModelAndView("booksOnLoan", "model", checkoutModel);
+    ModelAndView checkoutBook(@RequestParam String isbn) {
+        Optional<Book> book = bookService.getBookWithIsbn(isbn);
+        if (book.isPresent()) {
+            return new ModelAndView("");
+        } else {
+        }
     }
 }

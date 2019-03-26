@@ -1,11 +1,13 @@
 package org.softwire.training.bookish.controllers;
 
 import org.softwire.training.bookish.models.database.Book;
+import org.softwire.training.bookish.models.database.Checkout;
 import org.softwire.training.bookish.models.database.Member;
 import org.softwire.training.bookish.models.database.Technology;
 import org.softwire.training.bookish.models.page.AboutPageModel;
 import org.softwire.training.bookish.models.page.CatalogueModel;
 import org.softwire.training.bookish.services.BookService;
+import org.softwire.training.bookish.services.CheckoutService;
 import org.softwire.training.bookish.services.TechnologyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,9 +26,13 @@ import java.util.Optional;
 public class CatalogueController {
 
     private final BookService bookService;
+    private final CheckoutService checkoutService;
 
     @Autowired
-    public CatalogueController(BookService bookService) { this.bookService = bookService; }
+    public CatalogueController(BookService bookService, CheckoutService checkoutService) {
+        this.bookService = bookService;
+        this.checkoutService = checkoutService;
+    }
 
     @RequestMapping("")
     ModelAndView catalogue(@ModelAttribute("message") String message) {
@@ -57,14 +63,12 @@ public class CatalogueController {
 
     @RequestMapping("/delete-book")
         RedirectView deleteBook(@RequestParam String isbn) {
-
         bookService.deleteBook(isbn);
-
         return new RedirectView("/catalogue");
     }
 
     @RequestMapping("/edit-book")
-    RedirectView editMember(@ModelAttribute Book book) {
+    RedirectView editBook(@ModelAttribute Book book) {
         bookService.editBook(book);
         return new RedirectView("/catalogue");
     }
