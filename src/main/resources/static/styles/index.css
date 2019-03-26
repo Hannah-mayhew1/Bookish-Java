@@ -1,13 +1,14 @@
 
 .jumbotron {
-    width: 100%;
+    width: 55%;
     margin: 50px 0;
 
     background-color: #e9ecef;
     border-radius: 30px;
     padding: 50px 30px;
-    position: relative;
-    left: -300px;
+    position: absolute;
+    left: 0px;
+    margin-left: 50px;
 }
 
 .jumbotron h1 {

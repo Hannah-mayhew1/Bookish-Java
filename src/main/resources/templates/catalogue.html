@@ -63,9 +63,7 @@
                     <td><span th:text="${book.totalCopiesAvailable}"></span></td>
                 </tr>
             </table>
-        </div>
-    </div>
-    <div id="add-book">
+        <div id="add-book">
         <h3> Add a new book:</h3>
         <form th:action="@{/catalogue/add-book}" method="post">
             <div class="add-book-row">
@@ -103,6 +101,8 @@
                 <input type="submit" value="Add member" />
             </div>
         </form>
+        </div>
+        </div>
     </div>
 </body>
 </html>

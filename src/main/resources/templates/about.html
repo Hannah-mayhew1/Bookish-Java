@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="/styles/general.css"/>
         <link rel="stylesheet" href="/styles/navbar.css"/>
         <link rel="stylesheet" href="/styles/about.css"/>
+        <link rel="stylesheet" href="/styles/index.css"/>
     </head>
 
     <body>
@@ -16,50 +17,53 @@
         <div th:replace="fragments/navbar :: navbar">
             <!-- This element is replaced by the HTML in fragments/navbar.html -->
         </div>
-        <br>
-        <br>
-        <br>
-        <div class="images">
-            <div class="reallyresponsive">
-                <div class="gallery">
-                    <a target="_blank" >
-                        <img src="http://www.bayardtberndt.org/barnfront-good.jpeg" alt="External image of Book Barn" width="600" height="400">
-                    </a>
-                    <div class="desc"><b>Our Book Barn</b></div>
+        <div class="container">
+            <div class="jumbotron">
+            <h1> About Us </h1>
+            <br>
+            <div class="images">
+                <div class="reallyresponsive">
+                    <div class="gallery">
+                        <a target="_blank" >
+                            <img src="http://www.bayardtberndt.org/barnfront-good.jpeg" alt="External image of Book Barn" width="600" height="400">
+                        </a>
+                        <div class="desc"><b>Our Book Barn</b></div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="reallyresponsive">
+                    <div class="gallery">
+                        <a target="_blank" >
+                            <img src="http://forreadingaddicts.co.uk/wp-content/uploads/2016/01/baldwin-book-barn2.jpg" alt="Internal Room" width="600" height="400">
+                        </a>
+                        <div class="desc"><b>Just some of our amazing books</b></div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="reallyresponsive">
+                    <div class="gallery">
+                        <a target="_blank" >
+                            <img src="http://forreadingaddicts.co.uk/wp-content/uploads/2016/01/baldwin-book-barn1.jpg" alt="Internal Room" width="600" height="400">
+                        </a>
+                        <div class="desc"><b>Our Book Barn has many rooms to sit and curl up with one of our good books</b></div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="reallyresponsive">
+                    <div class="gallery">
+                        <a target="_blank" >
+                            <img src="http://forreadingaddicts.co.uk/wp-content/uploads/2016/01/baldwin-book-barn3.jpg" alt="Doorway" width="600" height="400">
+                        </a>
+                        <div class="desc"><b>One of our many Hidey-holes</b></div>
+                    </div>
                 </div>
             </div>
-            <br>
-            <br>
-            <div class="reallyresponsive">
-                <div class="gallery">
-                    <a target="_blank" >
-                        <img src="http://forreadingaddicts.co.uk/wp-content/uploads/2016/01/baldwin-book-barn2.jpg" alt="Internal Room" width="600" height="400">
-                    </a>
-                    <div class="desc"><b>Just some of our amazing books</b></div>
-                </div>
-            </div>
-            <br>
-            <br>
-            <div class="reallyresponsive">
-                <div class="gallery">
-                    <a target="_blank" >
-                        <img src="http://forreadingaddicts.co.uk/wp-content/uploads/2016/01/baldwin-book-barn1.jpg" alt="Internal Room" width="600" height="400">
-                    </a>
-                    <div class="desc"><b>Our Book Barn has many rooms to sit and curl up with one of our good books</b></div>
-                </div>
-            </div>
-            <br>
-            <br>
-            <div class="reallyresponsive">
-                <div class="gallery">
-                    <a target="_blank" >
-                        <img src="http://forreadingaddicts.co.uk/wp-content/uploads/2016/01/baldwin-book-barn3.jpg" alt="Doorway" width="600" height="400">
-                    </a>
-                    <div class="desc"><b>One of our many Hidey-holes</b></div>
-                </div>
+            <div class="clearfix"></div>
+            <div style="padding: 6px;"></div>
             </div>
         </div>
-        <div class="clearfix"></div>
-        <div style="padding: 6px;"></div>
     </body>
 </html>
