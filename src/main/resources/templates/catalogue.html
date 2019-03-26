@@ -13,6 +13,22 @@
     <link rel="stylesheet" href="/styles/index.css"/>
     <link rel="stylesheet" href="/styles/catalogue.css"/>
     <script>
+        function hideEditForm() {
+            $('#edit-book').hide();
+            $('#add-book').show();
+        }
+
+        function showEditForm(isbn, bookTitle, authorFirstName, authorSecondName, category) {
+            $('#edit-book #isbnInput').val(isbn);
+            $('#edit-book #bookTitleInput').val(bookTitle);
+            $('#edit-book #authorFirstNameInput').val(authorFirstName);
+            $('#edit-book #authorSecondNameInput').val(authorSecondName);
+            $('#edit-book #category').val(category);
+            $('#edit-book').show();
+            $('#edit-book').get(0).scrollIntoView();
+            $('#add-book').hide();
+        }
+
         function searchBooks() {
             var input, filter, table, tr, tds, i, txtValue;
             input = document.getElementById("search-books");
@@ -71,36 +87,36 @@
             <div class="add-book-row">
                 <label>
                     <span>ISBN: </span>
-                    <input type="text" name="isbn">
+                    <input id="isbnInput" type="text" name="isbn">
                 </label>
             </div>
             <div class="add-book-row">
                 <label>
                     <span>Book Title: </span>
-                    <input type="text" name="bookTitle">
+                    <input id="bookTitleInput" type="text" name="bookTitle">
                 </label>
             </div>
             <div class="add-book-row">
                 <label>
                     <span>Author First Name: </span>
-                    <input type="text" name="authorFirstName">
+                    <input id="authorFirstNameInput" type="text" name="authorFirstName">
                 </label>
             </div>
             <div class="add-book-row">
                 <label>
                     <span>Author Second Name: </span>
-                    <input type="text" name="authorSecondName">
+                    <input id="authorSecondNameInput" type="text" name="authorSecondName">
                 </label>
             </div>
             <div class="add-book-row">
                 <label>
                     <span>Category: </span>
-                    <input type="text" name="category">
+                    <input id="category" type="text" name="category">
                 </label>
             </div>
             <div class="add-book-row">
                 <span><!-- spacer --></span>
-                <input type="submit" value="Add member" />
+                <input type="submit" value="Add book" />
             </div>
         </form>
     </div>

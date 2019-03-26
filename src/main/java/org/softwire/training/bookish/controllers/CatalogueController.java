@@ -1,6 +1,7 @@
 package org.softwire.training.bookish.controllers;
 
 import org.softwire.training.bookish.models.database.Book;
+import org.softwire.training.bookish.models.database.Member;
 import org.softwire.training.bookish.models.database.Technology;
 import org.softwire.training.bookish.models.page.AboutPageModel;
 import org.softwire.training.bookish.models.page.CatalogueModel;
@@ -53,4 +54,19 @@ public class CatalogueController {
             return new RedirectView("/catalogue");
         }
     }
+
+    @RequestMapping("/delete-book")
+        RedirectView deleteBook(@RequestParam String isbn) {
+
+        bookService.deleteBook(isbn);
+
+        return new RedirectView("/catalogue");
+    }
+
+    @RequestMapping("/edit-book")
+    RedirectView editMember(@ModelAttribute Book book) {
+        bookService.editBook(book);
+        return new RedirectView("/catalogue");
+    }
+
 }
