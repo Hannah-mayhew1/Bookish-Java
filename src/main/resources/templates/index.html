@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
+<!--@thymesVar id="model" type="org.softwire.training.bookish.models.page.CheckoutModel"-->
 
     <head>
+        <meta charset="UTF-8">
         <title>The Book Barn - Home</title>
 
         <link rel="stylesheet" href="/styles/general.css"/>
@@ -19,9 +21,26 @@
         <div class="container">
             <div class="jumbotron">
                 <h1>The Book Barn</h1>
-                <p class="lead">Welcome to The Book Barn Local Library</p>
+                <p class="lead">Welcome to your local Library</p>
                 <p class="lead">Find your way around using the links above</p>
                 <img id="company-logo" src="../images/logo.png" alt="company logo">
+                <h2> Current Books on loan </h2>
+                <table>
+                    <tr>
+                        <th scope="col">ISBN</th>
+                        <th scope="col">Member ID</th>
+                        <th scope="col">Date Checked Out</th>
+                        <th scope="col">Date Due Back</th>
+                        <th scope="col">Checkout ID</th>
+                    </tr>
+                    <tr th:each="checkout : ${model.booksOnLoan}">
+                        <td><span th:text="${checkout.isbn}"></span></td>
+                        <td><span th:text="${checkout.memberId}"></span></td>
+                        <td><b><span th:text="${checkout.dateCheckedOut}"></span></b></td>
+                        <td><b><span th:text="${checkout.dateDueBack}"></span></b></td>
+                        <td><b><span th:text="${checkout.checkoutId}"></span></b></td>
+                    </tr>
+                </table>
             </div>
         </div>
     </body>

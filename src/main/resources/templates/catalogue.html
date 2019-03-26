@@ -10,12 +10,15 @@
     <link rel="stylesheet" href="/styles/navbar.css"/>
     <link rel="stylesheet" href="/styles/about.css"/>
     <link rel="stylesheet" href="/styles/table.css"/>
+    <link rel="stylesheet" href="/styles/index.css"/>
 </head>
 <body>
     <div th:replace="fragments/navbar :: navbar">
     </div>
-    <div>
-        <table>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Book Catalogue</h1>
+            <table>
             <tr>
                 <th scope="col">ISBN</th>
                 <th scope="col">Book Title</th>
@@ -33,6 +36,7 @@
                 <td><span th:text="${book.totalCopies}"></span></td>
             </tr>
         </table>
+        </div>
     </div>
 </body>
 </html>

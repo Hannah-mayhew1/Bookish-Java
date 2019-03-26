@@ -6,6 +6,8 @@
     background-color: #e9ecef;
     border-radius: 30px;
     padding: 50px 30px;
+    position: relative;
+    left: -300px;
 }
 
 .jumbotron h1 {
@@ -17,16 +19,29 @@
     line-height: 100%;
 }
 
+.jumbotron h2 {
+    margin: 0;
+
+    font-family: "Segoe UI", sans-serif;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 100%;
+}
+
 .jumbotron p {
     font-family: "Segoe UI", sans-serif;
     margin: 15px 0 0 0;
 }
 #company-logo {
     position: relative;
-    height: 200px;
-    width: 200px;
+    height: 250px;
+    width: 300px;
     left: 450px;
-    top: -100px;
+    top: -150px;
 
+}
+.table {
+    position: relative;
+    bottom: 100px;
 }
 

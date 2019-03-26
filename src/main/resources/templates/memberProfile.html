@@ -38,8 +38,8 @@
                 <td data-link="true"><b><span th:text="${checkout.checkoutId}"></span></b></td>
                 //CHANGE BELOW TO A RETURN BOOK BUTTON
                 <td>
-                    <a th:href="${'/members/delete-member?memberID=' + member.id}" class="delete-button">delete</a>
-                    <button th:onclick="'javascript:showEditForm(' + ${member.id} + ',\'' + ${member.firstName} + '\',\'' + ${member.secondName} + '\');'"
+                    <a th:href="${'/members/delete-member?memberID=' + model.member.id}" class="delete-button">delete</a>
+                    <button th:onclick="'javascript:showEditForm(' + ${model.member.id} + ',\'' + ${model.member.firstName} + '\',\'' + ${model.member.secondName} + '\');'"
                             class="delete-button">edit
                     </button>
                 </td>
