@@ -8,6 +8,7 @@ public class Book {
     String authorSecondName;
     String category;
     int totalCopies;
+    int totalCopiesAvailable;
 
     public String getIsbn() {
         return isbn;
@@ -57,5 +58,11 @@ public class Book {
         this.totalCopies = totalCopies;
     }
 
+    public int getTotalCopiesAvailable() {
+        return totalCopiesAvailable;
+    }
 
+    public void setTotalCopiesAvailable(int totalCopiesAvailable) {
+        this.totalCopiesAvailable = totalCopiesAvailable;
+    }
 }

@@ -1,6 +1,7 @@
 package org.softwire.training.bookish.controllers;
 
 import org.softwire.training.bookish.models.database.Book;
+import org.softwire.training.bookish.models.database.Checkout;
 import org.softwire.training.bookish.models.database.Member;
 import org.softwire.training.bookish.models.database.Technology;
 import org.softwire.training.bookish.models.page.AboutPageModel;
@@ -21,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
 import java.util.Optional;
 
@@ -93,5 +95,11 @@ public class MembersController {
     RedirectView editMember(@ModelAttribute Member member) {
         memberService.editMember(member);
         return new RedirectView("/members");
+    }
+
+    @RequestMapping("/{id}/return-book")
+    RedirectView returnBook (@PathVariable("id") Integer memberId, @RequestParam int checkoutId) {
+        memberService.returnBook(checkoutId);
+        return new RedirectView("/members/" + memberId);
     }
 }

@@ -12,3 +12,13 @@
     left: 240px;
     width: 60%
 }
+#search-members {
+    background-image: url("https://cdn2.iconfinder.com/data/icons/ui-1/75/19-512.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+}

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/styles/general.css"/>
     <link rel="stylesheet" href="/styles/navbar.css"/>
     <link rel="stylesheet" href="/styles/table.css"/>
+    <link rel="stylesheet" href="/styles/members.css"/>
     <script   src="http://code.jquery.com/jquery-3.3.1.min.js"   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="   crossorigin="anonymous"></script>
     <script>
         function hideEditForm() {
@@ -23,6 +24,27 @@
             $('#edit-member').show();
             $('#edit-member').get(0).scrollIntoView();
             $('#add-member').hide();
+        }
+
+        function searchMembers() {
+            var input, filter, table, tr, tds, i, txtValue;
+            input = document.getElementById("search-members");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("memberTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                tds = tr[i].getElementsByTagName("td".slice(0, 2));
+                if (tds.length > 0) {
+                    txtValue = (tds[0].textContent || tds[0].innerText) + ' ' + (tds[1].textContent || tds[1].innerText);
+                    if (txtValue.toUpperCase(). indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    }
+                    else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
         }
 
         $(document).ready(function() {
@@ -41,7 +63,10 @@
 </div>
 <div>
     <p th:if="${model.message != null}" th:text="${model.message}"></p>
-    <table>
+
+    <input type="text" id="search-members" onkeyup="searchMembers()" placeholder="  Search for a Member's Name:">
+
+    <table id="memberTable">
         <tr>
             <th scope="col">First Name</th>
             <th scope="col">Second Name</th>
