@@ -1,5 +1,6 @@
 package org.softwire.training.bookish.services;
 
+import org.softwire.training.bookish.models.database.Checkout;
 import org.softwire.training.bookish.models.database.Member;
 import org.springframework.stereotype.Service;
 
@@ -59,6 +60,14 @@ public class MemberService extends DatabaseService {
                         .bind("id", member.getId())
                         .bind("firstName", member.getFirstName())
                         .bind("secondName", member.getSecondName())
+                        .execute()
+        );
+    }
+
+    public void returnBook(int checkoutId) {
+        jdbi.useHandle(handle ->
+                handle.createUpdate("DELETE FROM checkout WHERE checkout_id = :id")
+                        .bind("id", checkoutId)
                         .execute()
         );
     }

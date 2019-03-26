@@ -11,6 +11,29 @@
     <link rel="stylesheet" href="/styles/about.css"/>
     <link rel="stylesheet" href="/styles/table.css"/>
     <link rel="stylesheet" href="/styles/index.css"/>
+    <link rel="stylesheet" href="/styles/catalogue.css"/>
+    <script>
+        function searchBooks() {
+            var input, filter, table, tr, tds, i, txtValue;
+            input = document.getElementById("search-books");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("bookTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                tds = tr[i].getElementsByTagName("td".slice(0, 5));
+                if (tds.length > 0) {
+                    txtValue = (tds[0].textContent || tds[0].innerText) + ' ' + (tds[1].textContent || tds[1].innerText) + ' ' + (tds[2].textContent || tds[2].innerText) + ' ' + (tds[3].textContent || tds[3].innerText) + ' ' + (tds[4].textContent || tds[4].innerText);
+                    if (txtValue.toUpperCase(). indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    }
+                    else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 <body>
     <div th:replace="fragments/navbar :: navbar">
@@ -18,25 +41,68 @@
     <div class="container">
         <div class="jumbotron">
             <h1>Book Catalogue</h1>
-            <table>
-            <tr>
-                <th scope="col">ISBN</th>
-                <th scope="col">Book Title</th>
-                <th scope="col">Author First Name</th>
-                <th scope="col">Author Second Name</th>
-                <th scope="col">Category</th>
-                <th scope="col">Total Copies</th>
-            </tr>
-            <tr th:each="book : ${model.books}">
-                <td><span th:text="${book.isbn}"></span></td>
-                <td><span th:text="${book.bookTitle}"></span></td>
-                <td><span th:text="${book.authorFirstName}"></span></td>
-                <td><span th:text="${book.authorSecondName}"></span></td>
-                <td><span th:text="${book.category}"></span></td>
-                <td><span th:text="${book.totalCopies}"></span></td>
-            </tr>
-        </table>
+            <p th:if="${model.message != null}" th:text="${model.message}"></p>
+            <input type="text" id="search-books" onkeyup="searchBooks()" placeholder="  Search for a Book by ISBN, Name, Author or Category: ">
+            <table id="bookTable">
+                <tr>
+                    <th scope="col">ISBN</th>
+                    <th scope="col">Book Title</th>
+                    <th scope="col">Author First Name</th>
+                    <th scope="col">Author Second Name</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Total Copies</th>
+                    <th scope="col">Copies Available</th>
+                </tr>
+                <tr th:each="book : ${model.books}">
+                    <td><span th:text="${book.isbn}"></span></td>
+                    <td><span th:text="${book.bookTitle}"></span></td>
+                    <td><span th:text="${book.authorFirstName}"></span></td>
+                    <td><span th:text="${book.authorSecondName}"></span></td>
+                    <td><span th:text="${book.category}"></span></td>
+                    <td><span th:text="${book.totalCopies}"></span></td>
+                    <td><span th:text="${book.totalCopiesAvailable}"></span></td>
+                </tr>
+            </table>
         </div>
+    </div>
+    <div id="add-book">
+        <h3> Add a new book:</h3>
+        <form th:action="@{/catalogue/add-book}" method="post">
+            <div class="add-book-row">
+                <label>
+                    <span>ISBN: </span>
+                    <input type="text" name="isbn">
+                </label>
+            </div>
+            <div class="add-book-row">
+                <label>
+                    <span>Book Title: </span>
+                    <input type="text" name="bookTitle">
+                </label>
+            </div>
+            <div class="add-book-row">
+                <label>
+                    <span>Author First Name: </span>
+                    <input type="text" name="authorFirstName">
+                </label>
+            </div>
+            <div class="add-book-row">
+                <label>
+                    <span>Author Second Name: </span>
+                    <input type="text" name="authorSecondName">
+                </label>
+            </div>
+            <div class="add-book-row">
+                <label>
+                    <span>Category: </span>
+                    <input type="text" name="category">
+                </label>
+            </div>
+            <div class="add-book-row">
+                <span><!-- spacer --></span>
+                <input type="submit" value="Add member" />
+            </div>
+        </form>
     </div>
 </body>
 </html>
