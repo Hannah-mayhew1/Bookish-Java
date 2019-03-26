@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/styles/navbar.css"/>
     <link rel="stylesheet" href="/styles/table.css"/>
     <link rel="stylesheet" href="/styles/members.css"/>
+    <link rel="stylesheet" href="/styles/index.css"/>
     <script   src="http://code.jquery.com/jquery-3.3.1.min.js"   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="   crossorigin="anonymous"></script>
     <script>
         function hideEditForm() {
@@ -61,7 +62,10 @@
 <body>
 <div th:replace="fragments/navbar :: navbar">
 </div>
-<div>
+<div class="container">
+    <div class="jumbotron">
+        <h1>All our members</h1>
+        <div>
     <p th:if="${model.message != null}" th:text="${model.message}"></p>
 
     <input type="text" id="search-members" onkeyup="searchMembers()" placeholder="  Search for a Member's Name:">
@@ -126,6 +130,8 @@
             <input type="submit" value="Edit member" /> <input type="button" th:onclick="'javascript:hideEditForm()'" value ="Cancel"/>
         </div>
     </form>
+</div>
+</div>
 </div>
 </body>
 </html>

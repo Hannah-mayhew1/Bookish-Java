@@ -7,6 +7,8 @@
     border-radius: 30px;
     padding: 50px 30px;
     position: absolute;
+    left: 0px;
+    margin-left: 50px;
 }
 
 .jumbotron h1 {
