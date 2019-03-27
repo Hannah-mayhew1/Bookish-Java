@@ -5,4 +5,18 @@ tr:nth-child(odd) {
 tr:nth-child(even) {
     background-color: #eee0e5;
 }
-tr {cursor: pointer; }
+
+.member-row {cursor: pointer; }
+
+table {
+    font-size: 15px;
+    margin: 0 auto;
+    width: 100%;
+}
+tr {
+    height: 20px;
+}
+
+td {
+    white-space: nowrap;
+}

@@ -25,5 +25,10 @@ body {
     flex-grow: 1;
 }
 
-
+.button {
+    display: inline-block;
+}
+.center-button {
+    text-align: center;
+}
 

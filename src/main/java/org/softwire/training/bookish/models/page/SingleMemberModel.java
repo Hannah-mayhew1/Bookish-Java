@@ -11,7 +11,6 @@ public class SingleMemberModel {
     private List<Checkout> booksOnLoanByMember;
 
     public Member getMember() { return member; }
-
     public void setMember(Member member) {
         this.member = member;
     }
@@ -19,6 +18,5 @@ public class SingleMemberModel {
     public List<Checkout> getBooksOnLoanByMember() {
         return booksOnLoanByMember;
     }
-
     public void setBooksOnLoanByMember(List<Checkout> booksOnLoanByMember) { this.booksOnLoanByMember = booksOnLoanByMember; }
 }

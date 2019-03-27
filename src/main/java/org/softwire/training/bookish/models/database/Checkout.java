@@ -5,6 +5,7 @@ import java.time.LocalDate;
 public class Checkout {
 
     String isbn;
+    String bookTitle;
     int memberId;
     LocalDate dateCheckedOut;
     LocalDate dateDueBack;

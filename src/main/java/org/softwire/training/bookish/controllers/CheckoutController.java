@@ -1,6 +1,7 @@
 package org.softwire.training.bookish.controllers;
 
 import org.softwire.training.bookish.models.database.Book;
+import org.softwire.training.bookish.models.page.SingleMemberModel;
 import org.softwire.training.bookish.services.BookService;
 import org.softwire.training.bookish.services.CheckoutService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,12 +25,14 @@ public class CheckoutController {
         this.bookService = bookService;
     }
 
-    @RequestMapping("")
+   /* @RequestMapping("")
     ModelAndView checkoutBook(@RequestParam String isbn) {
         Optional<Book> book = bookService.getBookWithIsbn(isbn);
         if (book.isPresent()) {
-            return new ModelAndView("");
+            return new ModelAndView("checkoutPage");
         } else {
+
         }
     }
+    */
 }

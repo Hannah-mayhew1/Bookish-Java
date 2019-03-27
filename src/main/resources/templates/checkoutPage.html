@@ -39,7 +39,7 @@
             <td data-link="true"><b><span th:text="${checkout.dateDueBack}"></span></b></td>
             <td data-link="true"><b><span th:text="${checkout.checkoutId}"></span></b></td>
             <td>
-                <a th:href="${'/members/' + model.member.id +  '/return-book?checkoutId=' + checkout.checkoutId}" class="returnBook-button"><button>Return Book</button></a>
+                <a th:href="${'/members/' + model.member.id +  '/return-book?checkoutId=' + checkout.checkoutId}" class="button"><button>Return Book</button></a>
             </td>
         </tr>
     </table>
