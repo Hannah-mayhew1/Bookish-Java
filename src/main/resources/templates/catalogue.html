@@ -57,7 +57,7 @@
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
 <div class="container">
-    <div class="jumbotron">
+    <div class="catalogue-jumbotron">
         <h1>Book Catalogue</h1>
         <p th:if="${model.message != null}" th:text="${model.message}"></p>
         <input type="text" id="search-books" onkeyup="searchBooks()"
@@ -82,15 +82,16 @@
                 <td><span th:text="${book.totalCopies}"></span></td>
                 <td><span th:text="${book.totalCopiesAvailable}"></span></td>
                 <td class="center-button">
-                    <a th:href="${'/catalogue/delete-book?isbn=' + book.isbn}" class="button"><button>Delete</button></a>
+                    <a th:href="${'/catalogue/delete-book?isbn=' + book.isbn}"><button class="delete-button"></button></a>
                     <button th:onclick="'javascript:showEditForm(\'' + ${book.isbn} + '\',\'' + ${book.bookTitle} + '\',\'' + ${book.authorFirstName} + '\',\'' + ${book.authorSecondName} + '\',\'' + ${book.category} +'\');'"
-                            class="button">Edit</button>
-                    <a th:href="${'/catalogue/checkoutPage?isbn=' + book.isbn}" class="button"><button>Checkout</button></a>
+                            class="edit-button"></button>
+                    <a th:href="${'/checkoutPage?isbn=' + book.isbn}" class="checkout-button"><button>Checkout</button></a>
                 </td>
             </tr>
         </table>
+        <br>
         <div id="add-book">
-            <h3> Add a new book:</h3>
+            <h3 class="form-title"> Add a new book:</h3>
             <form th:action="@{/catalogue/add-book}" method="post">
                 <div class="add-book-row">
                     <label>
@@ -129,7 +130,7 @@
             </form>
         </div>
         <div id="edit-book">
-            <h3>Edit book:</h3>
+            <h3 class="form-title">Edit book:</h3>
             <form th:action="@{/catalogue/edit-book}" method="post">
                 <div class="edit-book-row">
                     <label>

@@ -18,5 +18,13 @@ tr {
 }
 
 td {
+    max-width: 133px;
+    overflow: hidden;
+    text-overflow: ellipsis;
     white-space: nowrap;
+}
+.td:hover {
+    overflow: visible;
+    white-space: normal;
+    height: auto;
 }

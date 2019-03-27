@@ -81,16 +81,15 @@
             <td data-link="true"><span th:text="${member.secondName}"></span></td>
             <td data-link="true"><b><span th:text="${member.id}"></span></b></td>
             <td class="center-button">
-                <a th:href="${'/members/delete-member?memberID=' + member.id}" class="button"><button>Delete</button></a>
-                <button th:onclick="'javascript:showEditForm(' + ${member.id} + ',\'' + ${member.firstName} + '\',\'' + ${member.secondName} + '\');'" class="button">Edit</button>
+                <a th:href="${'/members/delete-member?memberID=' + member.id}" ><button class="delete-button"></button></a>
+                <button th:onclick="'javascript:showEditForm(' + ${member.id} + ',\'' + ${member.firstName} + '\',\'' + ${member.secondName} + '\');'" class="edit-button"></button>
             </td>
         </tr>
     </table>
 </div>
 <br>
-<br>
 <div id="add-member">
-    <h3> Add a new member:</h3>
+    <h3 class="form-title"> Add a new member:</h3>
     <form th:action="@{/members/add-member}" method="post">
         <div class="add-member-row">
             <label>
@@ -106,12 +105,12 @@
         </div>
         <div class="add-member-row">
             <span><!-- spacer --></span>
-            <input type="submit" value="Add member" />
+            <input class="center-button" type="submit" value="Add member" />
         </div>
     </form>
 </div>
 <div id="edit-member">
-    <h3>Edit member:</h3>
+    <h3 class="form-title">Edit member:</h3>
     <form th:action="@{/members/edit-member}" method="post">
         <input id="id-input" type="hidden" name="id">
         <div class="edit-member-row">
@@ -128,7 +127,7 @@
         </div>
         <div class="edit-member-row">
             <span><!-- spacer --></span>
-            <input type="submit" value="Edit member" /> <input type="button" th:onclick="'javascript:hideEditForm()'" value ="Cancel"/>
+            <input class="center-button" type="submit" value="Edit member" /> <input type="button" th:onclick="'javascript:hideEditForm()'" value ="Cancel"/>
         </div>
     </form>
 </div>
