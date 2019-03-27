@@ -1,13 +1,10 @@
 package org.softwire.training.bookish.controllers;
 
 import org.softwire.training.bookish.models.database.Book;
-<<<<<<< HEAD
-=======
 import org.softwire.training.bookish.models.database.Checkout;
 import org.softwire.training.bookish.models.database.Member;
 import org.softwire.training.bookish.models.page.CheckoutPageModel;
 import org.softwire.training.bookish.models.page.IndexPageModel;
->>>>>>> 0f846e3b31a1f4ad8b173126d89136f01b12b82d
 import org.softwire.training.bookish.models.page.SingleMemberModel;
 import org.softwire.training.bookish.services.BookService;
 import org.softwire.training.bookish.services.CheckoutService;

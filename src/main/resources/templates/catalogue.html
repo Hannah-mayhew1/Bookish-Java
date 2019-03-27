@@ -85,13 +85,7 @@
                     <a th:href="${'/catalogue/delete-book?isbn=' + book.isbn}" class="button"><button>Delete</button></a>
                     <button th:onclick="'javascript:showEditForm(\'' + ${book.isbn} + '\',\'' + ${book.bookTitle} + '\',\'' + ${book.authorFirstName} + '\',\'' + ${book.authorSecondName} + '\',\'' + ${book.category} +'\');'"
                             class="button">Edit</button>
-                    <a th:href="${'/catalogue/checkout?isbn=' + book.isbn}" class="button"><button>Checkout</button></a>
-                <td>
-                    <a th:href="${'/catalogue/delete-book?isbn=' + book.isbn}" class="delete-button">delete</a>
-                    <button th:onclick="'javascript:showEditForm(' + ${book.isbn} + ',\'' + ${book.bookTitle} + '\',\'' + ${book.authorFirstName} + '\',\'' + ${book.authorSecondName} + '\',\'' + ${book.category} +'\');'"
-                            class="delete-button">edit
-                    </button>
-                    <a th:href="${'/checkoutPage?isbn=' + book.isbn}" class="checkout-button">Checkout</a>
+                    <a th:href="${'/catalogue/checkoutPage?isbn=' + book.isbn}" class="button"><button>Checkout</button></a>
                 </td>
             </tr>
         </table>
