@@ -86,7 +86,7 @@
                     <button th:onclick="'javascript:showEditForm(' + ${book.isbn} + ',\'' + ${book.bookTitle} + '\',\'' + ${book.authorFirstName} + '\',\'' + ${book.authorSecondName} + '\',\'' + ${book.category} +'\');'"
                             class="delete-button">edit
                     </button>
-                    <a th:href="${'/catalogue/checkout?isbn=' + book.isbn}" class="checkout-button">Checkout</a>
+                    <a th:href="${'/checkoutPage?isbn=' + book.isbn}" class="checkout-button">Checkout</a>
                 </td>
             </tr>
         </table>

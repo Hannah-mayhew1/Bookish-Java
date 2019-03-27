@@ -1,6 +1,9 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-<!--@thymesVar id="model" type="org.softwire.training.bookish.models.page.AboutPageModel"-->
+
+
+<!--@thymesVar id="model" type="org.softwire.training.bookish.models.page.CheckoutPageModel"-->
+
 
 <head>
     <meta charset="UTF-8">
@@ -12,36 +15,53 @@
     <link rel="stylesheet" href="/styles/index.css"/>
     <link rel="stylesheet" href="/styles/members.css"/>
     <link rel="stylesheet" href="/styles/table.css"/>
+    <link rel="stylesheet" href="/styles/catalogue.css"/>
 
 </head>
 <body>
     <div th:replace="fragments/navbar :: navbar">
         <!-- This element is replaced by the HTML in fragments/navbar.html -->
     </div>
-    <div style="position: relative; width: 100%;">
-        <img id="member-icon" src="http://www.kingsvilletwp.org/wp-content/uploads/2017/06/cropped-person-icon-8-1.png"
-             alt="member-icon">
-        <div id="member-name">
-            <h1 th:text="${model.member.firstName} + ' ' + ${model.member.secondName}"></h1>
+    <div class="container">
+        <div class="jumbotron">
+            <div style="position: relative; width: 100%;">
+                <img id="member-icon" src="http://www.kingsvilletwp.org/wp-content/uploads/2017/06/cropped-person-icon-8-1.png"
+                     alt="member-icon">
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <input th:value="${model.onebook}"
+                placeholder="enter ISBN">
+            <input th:value="${model.member == null ? '' : model.member.firstName + ' ' + model.member.secondName}"
+                placeholder="enter member ID">
+            <table>
+                <tr>
+                    <th scope="col">ISBN</th>
+                    <th scope="col">Member ID</th>
+                    <th scope="col">Date Checked Out</th>
+                    <th scope="col">Date Due Back</th>
+                    <th scope="col">Checkout ID</th>
+                </tr>
+                <tr th:each="checkout : ${model.booksOnLoan}">
+                    <td><span th:text="${checkout.isbn}"></span></td>
+                    <td><span th:text="${checkout.memberId}"></span></td>
+                    <td><b><span th:text="${checkout.dateCheckedOut}"></span></b></td>
+                    <td><b><span th:text="${checkout.dateDueBack}"></span></b></td>
+                    <td><b><span th:text="${checkout.checkoutId}"></span></b></td>
+                </tr>
+            </table>
         </div>
     </div>
-    <table th:if="${model.booksOnLoanByMember.size() > 0}">
-        <tr>
-            <th scope="col">ISBN</th>
-            <th scope="col">Checkout Date</th>
-            <th scope="col">Due Back Date</th>
-            <th scope="col">Checkout ID</th>
-            <th scope="col">Actions</th>
-        </tr>
-        <tr class="checkout-row" th:each="checkout : ${model.booksOnLoanByMember}">
-            <td data-link="true"><span th:text="${checkout.isbn}"></span></td>
-            <td data-link="true"><span th:text="${checkout.dateCheckedOut}"></span></td>
-            <td data-link="true"><b><span th:text="${checkout.dateDueBack}"></span></b></td>
-            <td data-link="true"><b><span th:text="${checkout.checkoutId}"></span></b></td>
-            <td>
-                <a th:href="${'/members/' + model.member.id +  '/return-book?checkoutId=' + checkout.checkoutId}" class="returnBook-button"><button>Return Book</button></a>
-            </td>
-        </tr>
-    </table>
 </body>
 </html>
