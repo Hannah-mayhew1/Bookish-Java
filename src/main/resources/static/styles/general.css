@@ -25,10 +25,29 @@ body {
     flex-grow: 1;
 }
 
-.button {
+.delete-button {
     display: inline-block;
+    background: url("https://cdn3.iconfinder.com/data/icons/cleaning-icons/512/Trash_Can-512.png");
+    height: 24px;
+    width: 24px;
+    background-size: contain;
+    border: none;
+}
+.edit-button {
+    display: inline-block;
+    background: url("https://www.freeiconspng.com/uploads/edit-new-icon-22.png");
+    height: 24px;
+    width: 24px;
+    background-size: contain;
+    border: none;");
+    height: 24px;
+    width: 24px;
+    background-size: contain;
+    border: none;
 }
 .center-button {
     text-align: center;
+    min-width: 133px;
 }
+
 

@@ -8,3 +8,21 @@
     border: 1px solid #ddd;
     margin-bottom: 12px;
 }
+
+.form-title {
+    text-align: center;
+    font-size: 24px;
+}
+
+form {
+    margin: 0 auto;
+    width: 332px;
+    font-size: 15px;
+}
+
+.edit-book-row, .add-book-row {
+    display: inline-block; !important;
+    clear: right;
+    width: 320px;
+    text-align: right;
+}

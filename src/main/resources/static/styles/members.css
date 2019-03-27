@@ -27,3 +27,33 @@
     text-align: center; !important;
     font-size: 7vw;
 }
+
+@media screen and (min-width: 1021px) {
+    #members-title {
+        font-size: 72px;
+    }
+}
+
+@media screen and (max-width: 702px) {
+    #members-title {
+        font-size: 50px;
+    }
+}
+
+.form-title {
+    text-align: center;
+    font-size: 24px;
+}
+
+form {
+    margin: 0 auto;
+    width: 332px;
+    font-size: 15px;
+}
+
+.add-member-row, .edit-member-row {
+    display: inline-block;
+    clear: right;
+    width: 280px;
+    text-align: right;
+}

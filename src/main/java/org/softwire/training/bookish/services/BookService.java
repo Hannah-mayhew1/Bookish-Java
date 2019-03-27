@@ -69,12 +69,12 @@ public class BookService extends DatabaseService {
     public void editBook(Book book) {
         jdbi.useHandle(handle ->
                 handle.createUpdate("UPDATE books SET book_title = :bookTitle, author_first_name = :authorFirstName," +
-                        " author_second_name = :authorSecondName, category = :category, total_copies = :totalCopies WHERE isbn = :isbn")
-                        .bind("book_title", book.getBookTitle())
+                        " author_second_name = :authorSecondName, category = :category WHERE isbn = :isbn")
+                        .bind("bookTitle", book.getBookTitle())
                         .bind("authorFirstName", book.getAuthorFirstName())
                         .bind("authorSecondName", book.getAuthorSecondName())
                         .bind("category", book.getCategory())
-                        .bind("totalCopies", book.getTotalCopies())
+                        .bind("isbn", book.getIsbn())
                         .execute()
         );
     }

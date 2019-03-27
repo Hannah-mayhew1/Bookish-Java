@@ -8,6 +8,20 @@
     left: 0px;
     margin-left: 50px;
     min-width: 392px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.catalogue-jumbotron {
+    width: 90%;
+    background-color: #e9ecef;
+    border-radius: 30px;
+    padding: 50px 30px;
+    position: absolute;
+    left: 0px;
+    margin-left: 50px;
+    min-width: 800px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .jumbotron h1 {
