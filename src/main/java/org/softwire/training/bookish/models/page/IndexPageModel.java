@@ -4,7 +4,7 @@ import org.softwire.training.bookish.models.database.Checkout;
 
 import java.util.List;
 
-public class CheckoutModel {
+public class IndexPageModel {
 
     private List<Checkout> booksOnLoan;
 

@@ -1,7 +1,7 @@
 package org.softwire.training.bookish.controllers;
 
 import org.softwire.training.bookish.models.database.Checkout;
-import org.softwire.training.bookish.models.page.CheckoutModel;
+import org.softwire.training.bookish.models.page.IndexPageModel;
 import org.softwire.training.bookish.services.CheckoutService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,9 +23,9 @@ public class IndexController {
     @RequestMapping("/")
     ModelAndView home() {
         List<Checkout> allBooksOnLoan = checkoutService.getAllBooksOnLoan();
-        CheckoutModel checkoutModel = new CheckoutModel();
-        checkoutModel.setBooksOnLoan(allBooksOnLoan);
-        return new ModelAndView("index", "model", checkoutModel);
+        IndexPageModel indexPageModel = new IndexPageModel();
+        indexPageModel.setBooksOnLoan(allBooksOnLoan);
+        return new ModelAndView("index", "model", indexPageModel);
     }
 
 }
