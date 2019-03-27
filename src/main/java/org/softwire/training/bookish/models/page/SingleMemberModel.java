@@ -10,6 +10,16 @@ public class SingleMemberModel {
     private Member member;
     private List<Checkout> booksOnLoanByMember;
 
+    public String getOnebook() {
+        return onebook;
+    }
+
+    public void setOnebook(String onebook) {
+        this.onebook = onebook;
+    }
+
+    private String onebook;
+
     public Member getMember() { return member; }
     public void setMember(Member member) {
         this.member = member;

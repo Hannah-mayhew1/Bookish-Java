@@ -9,7 +9,7 @@ import java.util.List;
 public class CheckoutPageModel {
 
     private Member member;
-    private List <Checkout> booksOnLoanByMember;
+//    private List <Checkout> booksOnLoanByMember;
     private List <Book> books;
     private String onebook;
     private List<Checkout> booksOnLoan;
@@ -18,9 +18,9 @@ public class CheckoutPageModel {
 
     public void setMember(Member member) { this.member = member; }
 
-    public List<Checkout> getBooksOnLoanByMember() { return booksOnLoanByMember; }
-
-    public void setBooksOnLoanByMember(List<Checkout> booksOnLoanByMember) { this.booksOnLoanByMember = booksOnLoanByMember; }
+//    public List<Checkout> getBooksOnLoanByMember() { return booksOnLoanByMember; }
+//
+//    public void setBooksOnLoanByMember(List<Checkout> booksOnLoanByMember) { this.booksOnLoanByMember = booksOnLoanByMember; }
 
     public List<Book> getBooks() { return books; }
 

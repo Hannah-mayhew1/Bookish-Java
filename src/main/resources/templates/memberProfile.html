@@ -26,6 +26,24 @@
                 <h1 th:text="${model.member.firstName} + ' ' + ${model.member.secondName}"></h1>
             </div>
         </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <h3> Checkout book:</h3>
+                <input th:value="${model.onebook}" name="isbn" placeholder="enter ISBN">
+                <form th:action="@{/checkoutPage/createCheckout}" method="post">
+                    <input type="submit" value="Create Checkout" />
+                </form>
         <table th:if="${model.booksOnLoanByMember.size() > 0}">
             <tr>
                 <th scope="col">ISBN</th>

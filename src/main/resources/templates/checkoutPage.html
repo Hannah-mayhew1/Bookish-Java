@@ -28,39 +28,42 @@
                 <img id="member-icon" src="http://www.kingsvilletwp.org/wp-content/uploads/2017/06/cropped-person-icon-8-1.png"
                      alt="member-icon">
             </div>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <input th:value="${model.onebook}"
-                placeholder="enter ISBN">
-            <input th:value="${model.member == null ? '' : model.member.firstName + ' ' + model.member.secondName}"
-                placeholder="enter member ID">
-            <table>
-                <tr>
-                    <th scope="col">ISBN</th>
-                    <th scope="col">Member ID</th>
-                    <th scope="col">Date Checked Out</th>
-                    <th scope="col">Date Due Back</th>
-                    <th scope="col">Checkout ID</th>
-                </tr>
-                <tr th:each="checkout : ${model.booksOnLoan}">
-                    <td><span th:text="${checkout.isbn}"></span></td>
-                    <td><span th:text="${checkout.memberId}"></span></td>
-                    <td><b><span th:text="${checkout.dateCheckedOut}"></span></b></td>
-                    <td><b><span th:text="${checkout.dateDueBack}"></span></b></td>
-                    <td><b><span th:text="${checkout.checkoutId}"></span></b></td>
-                </tr>
-            </table>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <h3> Checkout book:</h3>
+                <form th:action="@{/checkoutPage/createCheckout}" method="post">
+                    <input th:value="${model.onebook}" name="isbn" placeholder="enter ISBN">
+                    <!--<input th:value="${model.member == null ? '' : model.member.firstName + ' ' + model.member.secondName}"-->
+                    <input th:value="${model.member}" name="memberName" placeholder="enter Member Name">
+                    <input type="submit" value="Create Checkout" />
+                </form>
+                <table>
+                    <tr>
+                        <th scope="col">ISBN</th>
+                        <th scope="col">Member ID</th>
+                        <th scope="col">Date Checked Out</th>
+                        <th scope="col">Date Due Back</th>
+                        <th scope="col">Checkout ID</th>
+                    </tr>
+                    <tr th:each="checkout : ${model.booksOnLoan}">
+                        <td><span th:text="${checkout.isbn}"></span></td>
+                        <td><span th:text="${checkout.memberId}"></span></td>
+                        <td><b><span th:text="${checkout.dateCheckedOut}"></span></b></td>
+                        <td><b><span th:text="${checkout.dateDueBack}"></span></b></td>
+                        <td><b><span th:text="${checkout.checkoutId}"></span></b></td>
+                    </tr>
+                </table>
         </div>
     </div>
 </body>

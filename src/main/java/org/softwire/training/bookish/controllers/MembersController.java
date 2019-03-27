@@ -23,6 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.websocket.server.PathParam;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,10 +34,13 @@ public class MembersController {
     private final MemberService memberService;
     private final CheckoutService checkoutService;
 
+
+
     @Autowired
     public MembersController(MemberService memberService, CheckoutService checkoutService) {
         this.memberService = memberService;
         this.checkoutService = checkoutService;
+
     }
 
     @RequestMapping("")
@@ -101,5 +105,7 @@ public class MembersController {
     RedirectView returnBook (@PathVariable("id") Integer memberId, @RequestParam int checkoutId) {
         memberService.returnBook(checkoutId);
         return new RedirectView("/members/" + memberId);
+
     }
+
 }
